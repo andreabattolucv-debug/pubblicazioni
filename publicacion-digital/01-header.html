@@ -9,13 +9,12 @@
 
   /* ── Variables ── */
   .pd-header {
-    --pd-blue:    #1A3C6E;
-    --pd-gold:    #C9952A;
-    --pd-light:   #F5F0E8;
-    --pd-white:   #FFFFFF;
-    --pd-dark:    #111827;
-    --pd-font-h:  'Playfair Display', Georgia, serif;
-    --pd-font-b:  'DM Sans', 'Helvetica Neue', sans-serif;
+    --pd-blue:   #1A3C6E;
+    --pd-orange: #E8601C;
+    --pd-cream:  #F5F0E8;
+    --pd-white:  #FFFFFF;
+    --pd-font-h: 'Playfair Display', Georgia, serif;
+    --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
   }
 
   /* ── Header wrapper ── */
@@ -29,7 +28,7 @@
 
   /* ── Top bar ── */
   .pd-header__topbar {
-    background: var(--pd-gold);
+    background: var(--pd-orange);
     padding: 8px 40px;
     display: flex;
     justify-content: flex-end;
@@ -40,7 +39,6 @@
     color: var(--pd-white);
     text-decoration: none;
     font-size: 13px;
-    font-family: var(--pd-font-b);
     font-weight: 500;
     letter-spacing: 0.03em;
     display: flex;
@@ -49,7 +47,6 @@
     transition: opacity 0.2s;
   }
   .pd-header__topbar a:hover { opacity: 0.8; }
-  .pd-header__topbar span { font-size: 15px; }
 
   /* ── Main nav ── */
   .pd-header__nav {
@@ -77,8 +74,8 @@
   }
   .pd-header__logo-sub {
     font-size: 10px;
-    font-weight: 400;
-    color: var(--pd-gold);
+    font-weight: 600;
+    color: var(--pd-orange);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-top: 3px;
@@ -94,9 +91,9 @@
   .pd-header__links a {
     color: rgba(255,255,255,0.80);
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     transition: color 0.2s;
     position: relative;
@@ -106,7 +103,7 @@
     position: absolute;
     bottom: -4px; left: 0;
     width: 0; height: 2px;
-    background: var(--pd-gold);
+    background: var(--pd-orange);
     transition: width 0.25s ease;
   }
   .pd-header__links a:hover { color: var(--pd-white); }
@@ -114,28 +111,28 @@
 
   /* ── CTA button ── */
   .pd-header__cta {
-    background: var(--pd-gold);
+    background: var(--pd-orange) !important;
     color: var(--pd-white) !important;
-    text-decoration: none;
-    padding: 11px 24px;
-    border-radius: 4px;
-    font-size: 13px !important;
+    text-decoration: none !important;
+    padding: 11px 24px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
     font-weight: 700 !important;
-    letter-spacing: 0.06em !important;
+    letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
     transition: background 0.2s, transform 0.15s !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
   }
   .pd-header__cta:hover {
-    background: #b5821f !important;
-    transform: translateY(-1px);
+    background: #cf541a !important;
+    transform: translateY(-1px) !important;
   }
   .pd-header__cta::after { display: none !important; }
 
   /* ── Divider line ── */
   .pd-header__divider {
     height: 1px;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.10);
     margin: 0 40px;
   }
 
@@ -177,7 +174,7 @@
   .pd-header__mobile-menu a:last-child {
     border-bottom: none;
     margin-top: 8px;
-    color: var(--pd-gold);
+    color: var(--pd-orange);
     font-weight: 700;
   }
   .pd-header__mobile-menu.pd-open { display: flex; }
@@ -194,17 +191,19 @@
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <header class="pd-header">
 
-  <!-- Top bar: contatti rapidi -->
+  <!-- Top bar -->
   <div class="pd-header__topbar">
-    <a href="tel:+390000000000">
-      <span>📞</span> (+39) 379 1599013
+    <a href="tel:+393791599013">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 11.1 19.79 19.79 0 01.07 2.5 2 2 0 012.03.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (+39) 379 1599013
     </a>
     <a href="mailto:info@publicaciondigital.com">
-      <span>✉</span> info@publicaciondigital.com
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      info@publicaciondigital.com
     </a>
   </div>
 
@@ -212,7 +211,7 @@
   <nav class="pd-header__nav">
 
     <!-- Logo -->
-    <a href="#" class="pd-header__logo">
+    <a href="#hero" class="pd-header__logo">
       <span class="pd-header__logo-main">Publicación Digital</span>
       <span class="pd-header__logo-sub">Tu libro en el mundo</span>
     </a>
@@ -255,5 +254,18 @@
       menu.classList.toggle('pd-open');
     });
   }
+
+  /* Smooth scroll per tutti gli anchor interni */
+  document.querySelectorAll('.pd-header a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        /* Chiudi menu mobile se aperto */
+        if(menu) menu.classList.remove('pd-open');
+      }
+    });
+  });
 })();
 </script>
