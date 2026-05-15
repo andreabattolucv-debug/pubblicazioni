@@ -4,10 +4,10 @@
      ============================================================ -->
 
 <style>
-  /* ── Reset & Base ── */
+  /* — Reset & Base — */
   .pd-header * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── Variables ── */
+  /* — Variables — */
   .pd-header {
     --pd-blue:   #1A3C6E;
     --pd-orange: #E8601C;
@@ -17,16 +17,20 @@
     --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
   }
 
-  /* ── Header wrapper ── */
+  /* — Full-bleed: sfonda il container Elementor — */
   .pd-header {
-    width: 100%;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     background: var(--pd-blue);
     font-family: var(--pd-font-b);
-    position: relative;
     z-index: 100;
   }
 
-  /* ── Top bar ── */
+  /* — Top bar — */
   .pd-header__topbar {
     background: var(--pd-orange);
     padding: 8px 40px;
@@ -48,7 +52,7 @@
   }
   .pd-header__topbar a:hover { opacity: 0.8; }
 
-  /* ── Main nav ── */
+  /* — Main nav — */
   .pd-header__nav {
     padding: 18px 40px;
     display: flex;
@@ -58,7 +62,7 @@
     margin: 0 auto;
   }
 
-  /* ── Logo ── */
+  /* — Logo — */
   .pd-header__logo {
     display: flex;
     flex-direction: column;
@@ -81,7 +85,7 @@
     margin-top: 3px;
   }
 
-  /* ── Menu links ── */
+  /* — Menu links — */
   .pd-header__links {
     display: flex;
     align-items: center;
@@ -109,7 +113,7 @@
   .pd-header__links a:hover { color: var(--pd-white); }
   .pd-header__links a:hover::after { width: 100%; }
 
-  /* ── CTA button ── */
+  /* — CTA button — */
   .pd-header__cta {
     background: var(--pd-orange) !important;
     color: var(--pd-white) !important;
@@ -129,14 +133,14 @@
   }
   .pd-header__cta::after { display: none !important; }
 
-  /* ── Divider line ── */
+  /* — Divider — */
   .pd-header__divider {
     height: 1px;
     background: rgba(255,255,255,0.10);
     margin: 0 40px;
   }
 
-  /* ── Mobile hamburger ── */
+  /* — Burger — */
   .pd-header__burger {
     display: none;
     flex-direction: column;
@@ -154,7 +158,7 @@
     transition: transform 0.3s, opacity 0.3s;
   }
 
-  /* ── Mobile menu ── */
+  /* — Mobile menu — */
   .pd-header__mobile-menu {
     display: none;
     flex-direction: column;
@@ -179,7 +183,7 @@
   }
   .pd-header__mobile-menu.pd-open { display: flex; }
 
-  /* ── Responsive ── */
+  /* — Responsive — */
   @media (max-width: 768px) {
     .pd-header__topbar { padding: 7px 20px; }
     .pd-header__nav { padding: 16px 20px; }
@@ -189,13 +193,11 @@
   }
 </style>
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <header class="pd-header">
 
-  <!-- Top bar -->
   <div class="pd-header__topbar">
     <a href="tel:+393791599013">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 11.1 19.79 19.79 0 01.07 2.5 2 2 0 012.03.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -207,16 +209,12 @@
     </a>
   </div>
 
-  <!-- Nav principale -->
   <nav class="pd-header__nav">
-
-    <!-- Logo -->
     <a href="#hero" class="pd-header__logo">
       <span class="pd-header__logo-main">Publicación Digital</span>
       <span class="pd-header__logo-sub">Tu libro en el mundo</span>
     </a>
 
-    <!-- Menu desktop -->
     <ul class="pd-header__links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#autores">Autores</a></li>
@@ -225,16 +223,13 @@
       <li><a href="#form1" class="pd-header__cta">Candidarme ahora</a></li>
     </ul>
 
-    <!-- Burger mobile -->
     <button class="pd-header__burger" id="pd-burger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
-
   </nav>
 
   <div class="pd-header__divider"></div>
 
-  <!-- Mobile menu -->
   <div class="pd-header__mobile-menu" id="pd-mobile-menu">
     <a href="#servicios">Servicios</a>
     <a href="#autores">Autores</a>
@@ -247,23 +242,20 @@
 
 <script>
 (function(){
-  var btn = document.getElementById('pd-burger');
+  var btn  = document.getElementById('pd-burger');
   var menu = document.getElementById('pd-mobile-menu');
-  if(btn && menu){
+  if (btn && menu) {
     btn.addEventListener('click', function(){
       menu.classList.toggle('pd-open');
     });
   }
-
-  /* Smooth scroll per tutti gli anchor interni */
   document.querySelectorAll('.pd-header a[href^="#"]').forEach(function(link){
     link.addEventListener('click', function(e){
       var target = document.querySelector(this.getAttribute('href'));
-      if(target){
+      if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        /* Chiudi menu mobile se aperto */
-        if(menu) menu.classList.remove('pd-open');
+        if (menu) menu.classList.remove('pd-open');
       }
     });
   });

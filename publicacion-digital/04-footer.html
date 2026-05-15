@@ -4,10 +4,8 @@
      ============================================================ -->
 
 <style>
-  /* ── Reset ── */
   .pd-footer * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── Variables ── */
   .pd-footer {
     --pd-blue:   #1A3C6E;
     --pd-orange: #E8601C;
@@ -17,15 +15,19 @@
     --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
   }
 
-  /* ── Footer wrapper ── */
+  /* — Full-bleed — */
   .pd-footer {
-    width: 100%;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     background: #0d1f3c;
     font-family: var(--pd-font-b);
     color: rgba(245,240,232,0.75);
   }
 
-  /* ── Main body ── */
   .pd-footer__body {
     max-width: 1200px;
     margin: 0 auto;
@@ -35,7 +37,6 @@
     gap: 48px;
   }
 
-  /* ── Brand ── */
   .pd-footer__logo {
     display: flex;
     flex-direction: column;
@@ -51,7 +52,7 @@
   }
   .pd-footer__logo-sub {
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--pd-orange);
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -65,7 +66,6 @@
     margin-bottom: 28px;
   }
 
-  /* Social */
   .pd-footer__social { display: flex; gap: 12px; }
   .pd-footer__social a {
     width: 38px; height: 38px;
@@ -84,7 +84,6 @@
   }
   .pd-footer__social svg { fill: rgba(245,240,232,0.7); width: 16px; height: 16px; }
 
-  /* ── Link columns ── */
   .pd-footer__col h4 {
     font-size: 11px;
     font-weight: 700;
@@ -93,12 +92,7 @@
     color: var(--pd-orange);
     margin-bottom: 20px;
   }
-  .pd-footer__col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .pd-footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
   .pd-footer__col ul li a,
   .pd-footer__col ul li span.pd-footer__contact-text {
     color: rgba(245,240,232,0.65);
@@ -110,22 +104,11 @@
   }
   .pd-footer__col ul li a:hover { color: var(--pd-cream); }
 
-  /* Contact column */
-  .pd-footer__col--contact ul li {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
+  .pd-footer__col--contact ul li { display: flex; gap: 10px; align-items: flex-start; }
   .pd-footer__contact-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
 
-  /* ── Divider ── */
-  .pd-footer__divider {
-    height: 1px;
-    background: rgba(255,255,255,0.08);
-    margin: 0 40px;
-  }
+  .pd-footer__divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0 40px; }
 
-  /* ── Bottom bar ── */
   .pd-footer__bottom {
     max-width: 1200px;
     margin: 0 auto;
@@ -136,10 +119,7 @@
     gap: 16px;
     flex-wrap: wrap;
   }
-  .pd-footer__copy {
-    font-size: 13px;
-    color: rgba(245,240,232,0.4);
-  }
+  .pd-footer__copy { font-size: 13px; color: rgba(245,240,232,0.4); }
   .pd-footer__legal { display: flex; gap: 20px; }
   .pd-footer__legal a {
     font-size: 13px;
@@ -149,7 +129,6 @@
   }
   .pd-footer__legal a:hover { color: rgba(245,240,232,0.75); }
 
-  /* ── Responsive ── */
   @media (max-width: 900px) {
     .pd-footer__body { grid-template-columns: 1fr 1fr; gap: 40px; }
     .pd-footer__brand { grid-column: 1 / -1; }
@@ -165,12 +144,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <footer class="pd-footer">
-
   <div class="pd-footer__body">
-
-    <!-- Brand -->
     <div class="pd-footer__brand">
-      <a href="#" class="pd-footer__logo">
+      <a href="#hero" class="pd-footer__logo">
         <span class="pd-footer__logo-main">Publicación Digital</span>
         <span class="pd-footer__logo-sub">Tu libro en el mundo</span>
       </a>
@@ -187,8 +163,6 @@
         </a>
       </div>
     </div>
-
-    <!-- Servicios -->
     <div class="pd-footer__col">
       <h4>Servicios</h4>
       <ul>
@@ -199,8 +173,6 @@
         <li><a href="#servicios">Diseño de portada</a></li>
       </ul>
     </div>
-
-    <!-- Empresa -->
     <div class="pd-footer__col">
       <h4>Empresa</h4>
       <ul>
@@ -211,8 +183,6 @@
         <li><a href="#">FAQ</a></li>
       </ul>
     </div>
-
-    <!-- Contacto -->
     <div class="pd-footer__col pd-footer__col--contact">
       <h4>Contacto</h4>
       <ul>
@@ -230,11 +200,8 @@
         </li>
       </ul>
     </div>
-
   </div>
-
   <div class="pd-footer__divider"></div>
-
   <div class="pd-footer__bottom">
     <p class="pd-footer__copy">© 2025 Publicación Digital · Todos los derechos reservados</p>
     <div class="pd-footer__legal">
@@ -243,5 +210,4 @@
       <a href="#">Cookies</a>
     </div>
   </div>
-
 </footer>
