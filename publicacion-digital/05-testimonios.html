@@ -1,0 +1,437 @@
+<!-- ============================================================
+     PUBLICACION DIGITAL — BLOCCO 5: TESTIMONIOS
+     Incolla questo codice in un blocco "HTML" di Elementor
+     ============================================================ -->
+
+<style>
+  .pd-test * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pd-test {
+    --pd-blue:   #1A3C6E;
+    --pd-orange: #E8601C;
+    --pd-cream:  #F5F0E8;
+    --pd-white:  #FFFFFF;
+    --pd-font-h: 'Playfair Display', Georgia, serif;
+    --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
+  }
+
+  /* — Full-bleed — */
+  .pd-test {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--pd-white);
+    font-family: var(--pd-font-b);
+    padding: 96px 0;
+    overflow: hidden;
+  }
+
+  /* — Header — */
+  .pd-test__header {
+    text-align: center;
+    padding: 0 40px;
+    margin-bottom: 56px;
+  }
+  .pd-test__label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 16px;
+  }
+  .pd-test__title {
+    font-family: var(--pd-font-h);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--pd-blue);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  /* — Google aggregate badge — */
+  .pd-test__google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 40px;
+    padding: 10px 20px;
+  }
+  .pd-test__google-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3c4043;
+    letter-spacing: -0.01em;
+  }
+  /* Google G colorato SVG inline */
+  .pd-test__google-g { width: 18px; height: 18px; flex-shrink: 0; }
+  .pd-test__badge-stars {
+    display: flex;
+    gap: 2px;
+  }
+  .pd-test__badge-stars svg { width: 16px; height: 16px; }
+  .pd-test__badge-score {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3c4043;
+  }
+  .pd-test__badge-count {
+    font-size: 13px;
+    color: #6b7280;
+    font-weight: 400;
+  }
+  .pd-test__badge-sep {
+    width: 1px;
+    height: 18px;
+    background: #d1d5db;
+  }
+
+  /* — Carousel track — */
+  .pd-test__track-wrap {
+    position: relative;
+    /* fade-out ai bordi */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .pd-test__track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: pd-scroll 40s linear infinite;
+  }
+  .pd-test__track:hover { animation-play-state: paused; }
+
+  @keyframes pd-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* — Card — */
+  .pd-test__card {
+    background: var(--pd-white);
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    width: 320px;
+    flex-shrink: 0;
+    transition: box-shadow 0.25s, transform 0.2s;
+    cursor: default;
+  }
+  .pd-test__card:hover {
+    box-shadow: 0 10px 36px rgba(26,60,110,0.10);
+    transform: translateY(-3px);
+  }
+
+  /* Card top row */
+  .pd-test__card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .pd-test__stars {
+    display: flex;
+    gap: 3px;
+  }
+  .pd-test__stars svg { width: 18px; height: 18px; }
+
+  /* Google icon piccolo in alto a destra */
+  .pd-test__card-google {
+    opacity: 0.55;
+    flex-shrink: 0;
+  }
+  .pd-test__card-google svg { width: 20px; height: 20px; }
+
+  /* Quote */
+  .pd-test__quote {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .pd-test__quote::before { content: '“'; }
+  .pd-test__quote::after  { content: '”'; }
+
+  /* Author */
+  .pd-test__author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 16px;
+  }
+  .pd-test__avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--pd-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pd-white);
+    flex-shrink: 0;
+  }
+  .pd-test__avatar--orange { background: var(--pd-orange); }
+  .pd-test__avatar--teal   { background: #0d9488; }
+  .pd-test__avatar--indigo { background: #4f46e5; }
+  .pd-test__avatar--rose   { background: #e11d48; }
+
+  .pd-test__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+  }
+  .pd-test__meta {
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  /* — Responsive — */
+  @media (max-width: 600px) {
+    .pd-test { padding: 64px 0; }
+    .pd-test__card { width: 270px; padding: 22px 20px 18px; }
+    .pd-test__track { animation-duration: 30s; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- SVG reutilizzabili -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <!-- stella piena -->
+  <symbol id="pd-star" viewBox="0 0 24 24">
+    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#FBBC04" stroke="none"/>
+  </symbol>
+  <!-- Google G -->
+  <symbol id="pd-google-g" viewBox="0 0 24 24">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC04"/>
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+  </symbol>
+</svg>
+
+<section class="pd-test" id="testimonios">
+
+  <!-- Header -->
+  <div class="pd-test__header">
+    <span class="pd-test__label">Testimonios</span>
+    <h2 class="pd-test__title">Lo que dicen nuestros autores</h2>
+
+    <!-- Badge Google aggregate -->
+    <div class="pd-test__google-badge">
+      <div class="pd-test__google-logo">
+        <svg class="pd-test__google-g"><use href="#pd-google-g"/></svg>
+        Google
+      </div>
+      <div class="pd-test__badge-sep"></div>
+      <div class="pd-test__badge-stars">
+        <svg><use href="#pd-star"/></svg>
+        <svg><use href="#pd-star"/></svg>
+        <svg><use href="#pd-star"/></svg>
+        <svg><use href="#pd-star"/></svg>
+        <svg><use href="#pd-star"/></svg>
+      </div>
+      <span class="pd-test__badge-score">5.0</span>
+      <span class="pd-test__badge-count">(47 reseñas)</span>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="pd-test__track-wrap">
+    <div class="pd-test__track" id="pd-test-track">
+
+      <!-- === CARDS (set A) === -->
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Publicación Digital transformó mi sueño en realidad. En menos de dos meses mi novela estaba disponible en Amazon y Apple Books. El equipo es cercano, profesional y muy paciente.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar">MA</div>
+          <div>
+            <div class="pd-test__name">María Alejandra Ruiz</div>
+            <div class="pd-test__meta">Autora · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Excelente servicio de principio a fin. La corrección editorial fue impecable y el diseño de portada superó mis expectativas. Mi libro ya lleva más de 300 copias vendidas.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--orange">JC</div>
+          <div>
+            <div class="pd-test__name">Jorge Calderón</div>
+            <div class="pd-test__meta">Autor · Ciudad de México</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Venía de malas experiencias con otras editoriales. Aquí todo fue transparente desde el primer contacto. Distribuyeron mi poemario en 28 países. No puedo pedir más.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--teal">SL</div>
+          <div>
+            <div class="pd-test__name">Sofía Limón</div>
+            <div class="pd-test__meta">Autora · Madrid</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">El panel del autor es increíblemente útil. Puedo ver mis ventas en tiempo real y recibir los royalties sin complicaciones. Un servicio serio y honesto que recomiendo sin dudar.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--indigo">RP</div>
+          <div>
+            <div class="pd-test__name">Roberto Paredes</div>
+            <div class="pd-test__meta">Autor · Bogotá</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Publiqué mi primer libro de autoayuda con ellos y la experiencia fue extraordinaria. Me guiaron en cada etapa, desde el manuscrito hasta la presentación en redes. ¡Gracias!</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--rose">LV</div>
+          <div>
+            <div class="pd-test__name">Laura Valenzuela</div>
+            <div class="pd-test__meta">Autora · Lima</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === CARDS (set B — duplicato per loop seamless) === -->
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Publicación Digital transformó mi sueño en realidad. En menos de dos meses mi novela estaba disponible en Amazon y Apple Books. El equipo es cercano, profesional y muy paciente.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar">MA</div>
+          <div>
+            <div class="pd-test__name">María Alejandra Ruiz</div>
+            <div class="pd-test__meta">Autora · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Excelente servicio de principio a fin. La corrección editorial fue impecable y el diseño de portada superó mis expectativas. Mi libro ya lleva más de 300 copias vendidas.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--orange">JC</div>
+          <div>
+            <div class="pd-test__name">Jorge Calderón</div>
+            <div class="pd-test__meta">Autor · Ciudad de México</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Venía de malas experiencias con otras editoriales. Aquí todo fue transparente desde el primer contacto. Distribuyeron mi poemario en 28 países. No puedo pedir más.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--teal">SL</div>
+          <div>
+            <div class="pd-test__name">Sofía Limón</div>
+            <div class="pd-test__meta">Autora · Madrid</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">El panel del autor es increíblemente útil. Puedo ver mis ventas en tiempo real y recibir los royalties sin complicaciones. Un servicio serio y honesto que recomiendo sin dudar.</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--indigo">RP</div>
+          <div>
+            <div class="pd-test__name">Roberto Paredes</div>
+            <div class="pd-test__meta">Autor · Bogotá</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-test__card">
+        <div class="pd-test__card-top">
+          <div class="pd-test__stars">
+            <svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg><svg><use href="#pd-star"/></svg>
+          </div>
+          <div class="pd-test__card-google"><svg class="pd-test__card-google"><use href="#pd-google-g"/></svg></div>
+        </div>
+        <p class="pd-test__quote">Publiqué mi primer libro de autoayuda con ellos y la experiencia fue extraordinaria. Me guiaron en cada etapa, desde el manuscrito hasta la presentación en redes. ¡Gracias!</p>
+        <div class="pd-test__author">
+          <div class="pd-test__avatar pd-test__avatar--rose">LV</div>
+          <div>
+            <div class="pd-test__name">Laura Valenzuela</div>
+            <div class="pd-test__meta">Autora · Lima</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.pd-test__track -->
+  </div><!-- /.pd-test__track-wrap -->
+
+</section>
