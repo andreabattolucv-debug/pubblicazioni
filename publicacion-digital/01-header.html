@@ -1,0 +1,259 @@
+<!-- ============================================================
+     PUBLICACION DIGITAL — BLOCCO 1: HEADER
+     Incolla questo codice in un blocco "HTML" di Elementor
+     ============================================================ -->
+
+<style>
+  /* ── Reset & Base ── */
+  .pd-header * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Variables ── */
+  .pd-header {
+    --pd-blue:    #1A3C6E;
+    --pd-gold:    #C9952A;
+    --pd-light:   #F5F0E8;
+    --pd-white:   #FFFFFF;
+    --pd-dark:    #111827;
+    --pd-font-h:  'Playfair Display', Georgia, serif;
+    --pd-font-b:  'DM Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  /* ── Header wrapper ── */
+  .pd-header {
+    width: 100%;
+    background: var(--pd-blue);
+    font-family: var(--pd-font-b);
+    position: relative;
+    z-index: 100;
+  }
+
+  /* ── Top bar ── */
+  .pd-header__topbar {
+    background: var(--pd-gold);
+    padding: 8px 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+  }
+  .pd-header__topbar a {
+    color: var(--pd-white);
+    text-decoration: none;
+    font-size: 13px;
+    font-family: var(--pd-font-b);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+  }
+  .pd-header__topbar a:hover { opacity: 0.8; }
+  .pd-header__topbar span { font-size: 15px; }
+
+  /* ── Main nav ── */
+  .pd-header__nav {
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── Logo ── */
+  .pd-header__logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+  }
+  .pd-header__logo-main {
+    font-family: var(--pd-font-h);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pd-white);
+    letter-spacing: 0.01em;
+  }
+  .pd-header__logo-sub {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--pd-gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  /* ── Menu links ── */
+  .pd-header__links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .pd-header__links a {
+    color: rgba(255,255,255,0.80);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .pd-header__links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--pd-gold);
+    transition: width 0.25s ease;
+  }
+  .pd-header__links a:hover { color: var(--pd-white); }
+  .pd-header__links a:hover::after { width: 100%; }
+
+  /* ── CTA button ── */
+  .pd-header__cta {
+    background: var(--pd-gold);
+    color: var(--pd-white) !important;
+    text-decoration: none;
+    padding: 11px 24px;
+    border-radius: 4px;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    transition: background 0.2s, transform 0.15s !important;
+    white-space: nowrap;
+  }
+  .pd-header__cta:hover {
+    background: #b5821f !important;
+    transform: translateY(-1px);
+  }
+  .pd-header__cta::after { display: none !important; }
+
+  /* ── Divider line ── */
+  .pd-header__divider {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 0 40px;
+  }
+
+  /* ── Mobile hamburger ── */
+  .pd-header__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .pd-header__burger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--pd-white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* ── Mobile menu ── */
+  .pd-header__mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--pd-blue);
+    padding: 20px 40px 28px;
+    gap: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .pd-header__mobile-menu a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .pd-header__mobile-menu a:last-child {
+    border-bottom: none;
+    margin-top: 8px;
+    color: var(--pd-gold);
+    font-weight: 700;
+  }
+  .pd-header__mobile-menu.pd-open { display: flex; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .pd-header__topbar { padding: 7px 20px; }
+    .pd-header__nav { padding: 16px 20px; }
+    .pd-header__links { display: none; }
+    .pd-header__burger { display: flex; }
+    .pd-header__divider { margin: 0 20px; }
+  }
+</style>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<header class="pd-header">
+
+  <!-- Top bar: contatti rapidi -->
+  <div class="pd-header__topbar">
+    <a href="tel:+390000000000">
+      <span>📞</span> (+39) 379 1599013
+    </a>
+    <a href="mailto:info@publicaciondigital.com">
+      <span>✉</span> info@publicaciondigital.com
+    </a>
+  </div>
+
+  <!-- Nav principale -->
+  <nav class="pd-header__nav">
+
+    <!-- Logo -->
+    <a href="#" class="pd-header__logo">
+      <span class="pd-header__logo-main">Publicación Digital</span>
+      <span class="pd-header__logo-sub">Tu libro en el mundo</span>
+    </a>
+
+    <!-- Menu desktop -->
+    <ul class="pd-header__links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#autores">Autores</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#quienes-somos">Quiénes somos</a></li>
+      <li><a href="#form1" class="pd-header__cta">Candidarme ahora</a></li>
+    </ul>
+
+    <!-- Burger mobile -->
+    <button class="pd-header__burger" id="pd-burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+
+  </nav>
+
+  <div class="pd-header__divider"></div>
+
+  <!-- Mobile menu -->
+  <div class="pd-header__mobile-menu" id="pd-mobile-menu">
+    <a href="#servicios">Servicios</a>
+    <a href="#autores">Autores</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#quienes-somos">Quiénes somos</a>
+    <a href="#form1">→ Candidarme ahora</a>
+  </div>
+
+</header>
+
+<script>
+(function(){
+  var btn = document.getElementById('pd-burger');
+  var menu = document.getElementById('pd-mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      menu.classList.toggle('pd-open');
+    });
+  }
+})();
+</script>

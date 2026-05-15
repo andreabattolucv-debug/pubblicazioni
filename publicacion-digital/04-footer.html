@@ -1,0 +1,247 @@
+<!-- ============================================================
+     PUBLICACION DIGITAL — BLOCCO 4: FOOTER
+     Incolla questo codice in un blocco "HTML" di Elementor
+     ============================================================ -->
+
+<style>
+  /* ── Reset ── */
+  .pd-footer * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Variables ── */
+  .pd-footer {
+    --pd-blue:   #1A3C6E;
+    --pd-orange: #E8601C;
+    --pd-cream:  #F5F0E8;
+    --pd-white:  #FFFFFF;
+    --pd-font-h: 'Playfair Display', Georgia, serif;
+    --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
+  }
+
+  /* ── Footer wrapper ── */
+  .pd-footer {
+    width: 100%;
+    background: #0d1f3c;
+    font-family: var(--pd-font-b);
+    color: rgba(245,240,232,0.75);
+  }
+
+  /* ── Main body ── */
+  .pd-footer__body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 40px 56px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  /* ── Brand ── */
+  .pd-footer__logo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+  .pd-footer__logo-main {
+    font-family: var(--pd-font-h);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pd-white);
+    letter-spacing: 0.01em;
+  }
+  .pd-footer__logo-sub {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--pd-orange);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .pd-footer__tagline {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.6);
+    max-width: 280px;
+    margin-bottom: 28px;
+  }
+
+  /* Social */
+  .pd-footer__social { display: flex; gap: 12px; }
+  .pd-footer__social a {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .pd-footer__social a:hover {
+    background: rgba(232,96,28,0.2);
+    border-color: rgba(232,96,28,0.4);
+  }
+  .pd-footer__social svg { fill: rgba(245,240,232,0.7); width: 16px; height: 16px; }
+
+  /* ── Link columns ── */
+  .pd-footer__col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 20px;
+  }
+  .pd-footer__col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pd-footer__col ul li a,
+  .pd-footer__col ul li span.pd-footer__contact-text {
+    color: rgba(245,240,232,0.65);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+    line-height: 1.5;
+  }
+  .pd-footer__col ul li a:hover { color: var(--pd-cream); }
+
+  /* Contact column */
+  .pd-footer__col--contact ul li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .pd-footer__contact-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+
+  /* ── Divider ── */
+  .pd-footer__divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 0 40px;
+  }
+
+  /* ── Bottom bar ── */
+  .pd-footer__bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .pd-footer__copy {
+    font-size: 13px;
+    color: rgba(245,240,232,0.4);
+  }
+  .pd-footer__legal { display: flex; gap: 20px; }
+  .pd-footer__legal a {
+    font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .pd-footer__legal a:hover { color: rgba(245,240,232,0.75); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .pd-footer__body { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .pd-footer__brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .pd-footer__body { grid-template-columns: 1fr; padding: 56px 20px 40px; }
+    .pd-footer__divider { margin: 0 20px; }
+    .pd-footer__bottom { flex-direction: column; align-items: flex-start; padding: 20px; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<footer class="pd-footer">
+
+  <div class="pd-footer__body">
+
+    <!-- Brand -->
+    <div class="pd-footer__brand">
+      <a href="#" class="pd-footer__logo">
+        <span class="pd-footer__logo-main">Publicación Digital</span>
+        <span class="pd-footer__logo-sub">Tu libro en el mundo</span>
+      </a>
+      <p class="pd-footer__tagline">Servicio editorial profesional para autores hispanohablantes. Publicamos tu obra en las principales plataformas del mundo.</p>
+      <div class="pd-footer__social">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="rgba(245,240,232,0.7)"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Servicios -->
+    <div class="pd-footer__col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Publicación en papel</a></li>
+        <li><a href="#servicios">eBook profesional</a></li>
+        <li><a href="#servicios">Distribución global</a></li>
+        <li><a href="#servicios">Corrección editorial</a></li>
+        <li><a href="#servicios">Diseño de portada</a></li>
+      </ul>
+    </div>
+
+    <!-- Empresa -->
+    <div class="pd-footer__col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+        <li><a href="#autores">Autores publicados</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#">Blog editorial</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="pd-footer__col pd-footer__col--contact">
+      <h4>Contacto</h4>
+      <ul>
+        <li>
+          <span class="pd-footer__contact-icon">📞</span>
+          <a href="tel:+393791599013">(+39) 379 1599013</a>
+        </li>
+        <li>
+          <span class="pd-footer__contact-icon">✉</span>
+          <a href="mailto:info@publicaciondigital.com">info@publicaciondigital.com</a>
+        </li>
+        <li>
+          <span class="pd-footer__contact-icon">🕐</span>
+          <span class="pd-footer__contact-text">Lun–Vie, 9:00–18:00 CET</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="pd-footer__divider"></div>
+
+  <div class="pd-footer__bottom">
+    <p class="pd-footer__copy">© 2025 Publicación Digital · Todos los derechos reservados</p>
+    <div class="pd-footer__legal">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+
+</footer>
