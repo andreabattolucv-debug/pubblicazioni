@@ -54,7 +54,7 @@
 
   /* — Main nav — */
   .pd-header__nav {
-    padding: 18px 40px;
+    padding: 14px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,26 +64,19 @@
 
   /* — Logo — */
   .pd-header__logo {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
+    display: block;
     text-decoration: none;
+    line-height: 0;
   }
-  .pd-header__logo-main {
-    font-family: var(--pd-font-h);
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--pd-white);
-    letter-spacing: 0.01em;
+  .pd-header__logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+    /* Il logo ha sfondo bianco: lo rendiamo adatto al nav scuro */
+    filter: brightness(0) invert(1);
+    transition: opacity 0.2s;
   }
-  .pd-header__logo-sub {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--pd-orange);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-top: 3px;
-  }
+  .pd-header__logo:hover img { opacity: 0.85; }
 
   /* — Menu links — */
   .pd-header__links {
@@ -186,10 +179,11 @@
   /* — Responsive — */
   @media (max-width: 768px) {
     .pd-header__topbar { padding: 7px 20px; }
-    .pd-header__nav { padding: 16px 20px; }
+    .pd-header__nav { padding: 12px 20px; }
     .pd-header__links { display: none; }
     .pd-header__burger { display: flex; }
     .pd-header__divider { margin: 0 20px; }
+    .pd-header__logo img { height: 38px; }
   }
 </style>
 
@@ -210,9 +204,10 @@
   </div>
 
   <nav class="pd-header__nav">
+
+    <!-- ⬇ Sostituisci l'src con l'URL del logo caricato su WordPress -->
     <a href="#hero" class="pd-header__logo">
-      <span class="pd-header__logo-main">Publicación Digital</span>
-      <span class="pd-header__logo-sub">Tu libro en el mundo</span>
+      <img src="https://via.placeholder.com/160x48?text=LOGO" alt="Publicación Digital">
     </a>
 
     <ul class="pd-header__links">
