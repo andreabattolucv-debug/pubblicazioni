@@ -57,7 +57,7 @@
     margin: 0 auto;
   }
 
-  /* — Logo SVG — */
+  /* — Logo — */
   .pd-header__logo {
     display: block;
     text-decoration: none;
@@ -65,7 +65,12 @@
     transition: opacity 0.2s;
   }
   .pd-header__logo:hover { opacity: 0.85; }
-  .pd-header__logo svg { height: 46px; width: auto; display: block; }
+  .pd-header__logo img {
+    height: 46px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
 
   /* — Menu links — */
   .pd-header__links {
@@ -169,7 +174,7 @@
     .pd-header__links { display: none; }
     .pd-header__burger { display: flex; }
     .pd-header__divider { margin: 0 20px; }
-    .pd-header__logo svg { height: 36px; }
+    .pd-header__logo img { height: 36px; }
   }
 </style>
 
@@ -191,18 +196,8 @@
 
   <nav class="pd-header__nav">
 
-    <!-- Logo SVG inline: icona segnalibro + testo, tutto bianco sul nav blu -->
     <a href="#hero" class="pd-header__logo" aria-label="Publicación Digital">
-      <svg viewBox="0 0 196 46" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Publicación Digital">
-        <!-- Quadrato bianco -->
-        <rect width="46" height="46" rx="4" fill="white"/>
-        <!-- Icona segnalibro (bookmark) in blu scuro -->
-        <path d="M12 9 H34 V38 L23 30 L12 38 Z" fill="#1A3C6E"/>
-        <!-- Testo PUBLICATION -->
-        <text x="56" y="20" font-family="Montserrat,sans-serif" font-size="13.5" font-weight="700" letter-spacing="2" fill="white">PUBLICATION</text>
-        <!-- Testo DIGITAL -->
-        <text x="56" y="38" font-family="Montserrat,sans-serif" font-size="13.5" font-weight="700" letter-spacing="2" fill="white">DIGITAL</text>
-      </svg>
+      <img src="https://publicaciondigital.es/wp-content/uploads/2026/05/Frame-33.png" alt="Publicación Digital">
     </a>
 
     <ul class="pd-header__links">
