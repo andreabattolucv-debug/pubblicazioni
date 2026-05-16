@@ -49,7 +49,7 @@
 
   /* — Main nav — */
   .pd-header__nav {
-    padding: 10px 40px;
+    padding: 12px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,11 +57,7 @@
     margin: 0 auto;
   }
 
-  /* — Logo —
-     mix-blend-mode:screen su sfondo scuro:
-     bianco (sfondo logo) × blu scuro = trasparente
-     rosso scuro (logo) = visibile come bianco/chiaro
-  -- */
+  /* — Logo — */
   .pd-header__logo {
     display: block;
     text-decoration: none;
@@ -69,11 +65,10 @@
     transition: opacity 0.2s;
   }
   .pd-header__logo:hover { opacity: 0.85; }
-  .pd-header__logo img {
+  .pd-header__logo svg {
     height: 52px;
     width: auto;
     display: block;
-    mix-blend-mode: screen;
   }
 
   /* — Menu links — */
@@ -178,7 +173,7 @@
     .pd-header__links { display: none; }
     .pd-header__burger { display: flex; }
     .pd-header__divider { margin: 0 20px; }
-    .pd-header__logo img { height: 38px; }
+    .pd-header__logo svg { height: 38px; }
   }
 </style>
 
@@ -200,8 +195,32 @@
 
   <nav class="pd-header__nav">
 
+    <!--
+      Logo SVG inline — versione bianca del brand:
+      quadrato bianco + segnalibro ritagliato (negativo del blu nav) + testo bianco.
+      Sfondo 100% trasparente, nessun file esterno.
+    -->
     <a href="#hero" class="pd-header__logo" aria-label="Publicación Digital">
-      <img src="https://publicaciondigital.es/wp-content/uploads/2026/05/logo-publicacion.png" alt="Publicación Digital">
+      <svg viewBox="0 0 248 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Quadrato bianco (corrisponde al quadrato rosso del logo originale) -->
+        <rect x="0" y="2" width="66" height="66" rx="3" fill="white"/>
+        <!-- Segnalibro ritagliato nel colore del nav (spazio negativo bianco nel logo originale) -->
+        <path d="M14 13 H52 V57 L33 44 L14 57 Z" fill="#1A3C6E"/>
+        <!-- PUBLICATION -->
+        <text x="80" y="33"
+          font-family="Montserrat, Arial, sans-serif"
+          font-size="14"
+          font-weight="700"
+          letter-spacing="2"
+          fill="white">PUBLICATION</text>
+        <!-- DIGITAL -->
+        <text x="80" y="54"
+          font-family="Montserrat, Arial, sans-serif"
+          font-size="14"
+          font-weight="700"
+          letter-spacing="2"
+          fill="white">DIGITAL</text>
+      </svg>
     </a>
 
     <ul class="pd-header__links">
