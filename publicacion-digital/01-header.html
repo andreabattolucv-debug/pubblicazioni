@@ -57,7 +57,11 @@
     margin: 0 auto;
   }
 
-  /* — Logo: nessun filter per diagnostica — */
+  /* — Logo —
+     mix-blend-mode:screen su sfondo scuro:
+     bianco (sfondo logo) × blu scuro = trasparente
+     rosso scuro (logo) = visibile come bianco/chiaro
+  -- */
   .pd-header__logo {
     display: block;
     text-decoration: none;
@@ -66,9 +70,10 @@
   }
   .pd-header__logo:hover { opacity: 0.85; }
   .pd-header__logo img {
-    height: 48px;
+    height: 52px;
     width: auto;
     display: block;
+    mix-blend-mode: screen;
   }
 
   /* — Menu links — */
@@ -173,7 +178,7 @@
     .pd-header__links { display: none; }
     .pd-header__burger { display: flex; }
     .pd-header__divider { margin: 0 20px; }
-    .pd-header__logo img { height: 36px; }
+    .pd-header__logo img { height: 38px; }
   }
 </style>
 
