@@ -60,21 +60,48 @@
     gap: 28px;
   }
 
+  /* ── Flip container ── */
   .pd-svc__card {
-    background: var(--pd-white);
-    border-radius: 12px;
-    padding: 36px 32px;
-    border: 1px solid rgba(26,60,110,0.08);
-    transition: box-shadow 0.25s, transform 0.2s, border-color 0.25s;
+    perspective: 1000px;
+    height: 380px;
+    cursor: pointer;
+  }
+
+  /* ── Inner — rotates on hover / touch ── */
+  .pd-svc__card-inner {
     position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(.4,0,.2,1);
+  }
+  .pd-svc__card:hover .pd-svc__card-inner,
+  .pd-svc__card.pd-flipped .pd-svc__card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* ── Face base ── */
+  .pd-svc__card-front,
+  .pd-svc__card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     overflow: hidden;
   }
-  .pd-svc__card:hover {
-    box-shadow: 0 12px 40px rgba(26,60,110,0.12);
-    transform: translateY(-4px);
-    border-color: rgba(232,96,28,0.2);
+
+  /* ── FRONT ── */
+  .pd-svc__card-front {
+    background: var(--pd-white);
+    border: 1px solid rgba(26,60,110,0.08);
+    padding: 36px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
-  .pd-svc__card::before {
+  /* orange top-bar on hover */
+  .pd-svc__card-front::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; height: 3px;
@@ -82,7 +109,7 @@
     opacity: 0;
     transition: opacity 0.25s;
   }
-  .pd-svc__card:hover::before { opacity: 1; }
+  .pd-svc__card:hover .pd-svc__card-front::before { opacity: 1; }
 
   .pd-svc__card-icon {
     width: 52px; height: 52px;
@@ -93,10 +120,8 @@
     justify-content: center;
     font-size: 24px;
     margin-bottom: 22px;
-    transition: background 0.2s;
+    flex-shrink: 0;
   }
-  .pd-svc__card:hover .pd-svc__card-icon { background: rgba(232,96,28,0.18); }
-
   .pd-svc__card-title {
     font-family: var(--pd-font-h);
     font-size: 19px;
@@ -124,13 +149,32 @@
     margin-top: 5px;
   }
 
-  .pd-svc__card--featured { background: var(--pd-blue); border-color: transparent; }
-  .pd-svc__card--featured::before { opacity: 1; }
+  /* Flip hint label */
+  .pd-svc__flip-hint {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(26,60,110,0.35);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .pd-svc__flip-hint::after { content: '↻'; font-size: 13px; }
+
+  /* Featured front */
+  .pd-svc__card--featured .pd-svc__card-front {
+    background: var(--pd-blue);
+    border-color: transparent;
+  }
+  .pd-svc__card--featured .pd-svc__card-front::before { opacity: 1; }
   .pd-svc__card--featured .pd-svc__card-title  { color: #FFFFFF; }
   .pd-svc__card--featured .pd-svc__card-desc   { color: rgba(245,240,232,0.7); }
   .pd-svc__card--featured .pd-svc__card-list li { color: rgba(245,240,232,0.85); }
   .pd-svc__card--featured .pd-svc__card-icon   { background: rgba(232,96,28,0.25); }
-  .pd-svc__card--featured:hover { box-shadow: 0 12px 40px rgba(26,60,110,0.3); }
+  .pd-svc__card--featured .pd-svc__flip-hint   { color: rgba(255,255,255,0.35); }
 
   .pd-svc__card-badge {
     position: absolute;
@@ -145,6 +189,60 @@
     border-radius: 20px;
   }
 
+  /* ── BACK ── */
+  .pd-svc__card-back {
+    background: var(--pd-blue);
+    transform: rotateY(180deg);
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .pd-svc__card--featured .pd-svc__card-back { background: #0d1f3c; }
+
+  .pd-svc__pain-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 10px;
+  }
+  .pd-svc__pain-q {
+    font-family: var(--pd-font-h);
+    font-size: 17px;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+  .pd-svc__pain-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.68);
+    line-height: 1.65;
+  }
+  .pd-svc__solution {
+    background: rgba(232,96,28,0.12);
+    border-left: 3px solid var(--pd-orange);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 14px;
+    margin-top: 18px;
+  }
+  .pd-svc__solution-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 6px;
+  }
+  .pd-svc__solution-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+  }
+
+  /* ── CTA below grid ── */
   .pd-svc__cta { text-align: center; margin-top: 56px; }
   .pd-svc__cta-link {
     display: inline-flex;
@@ -173,89 +271,202 @@
   @media (max-width: 640px) {
     .pd-svc { padding: 64px 20px; }
     .pd-svc__grid { grid-template-columns: 1fr; }
-    .pd-svc__card { padding: 28px 24px; }
+    /* Disable CSS hover on touch — JS handles toggle */
+    .pd-svc__card:hover .pd-svc__card-inner { transform: none; }
+    .pd-svc__card.pd-flipped .pd-svc__card-inner { transform: rotateY(180deg); }
   }
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <section class="pd-svc" id="servicios">
   <div class="pd-svc__inner">
     <div class="pd-svc__header">
       <span class="pd-svc__label">Nuestros servicios</span>
       <h2 class="pd-svc__title">Todo lo que necesitas para publicar</h2>
-      <p class="pd-svc__intro">Desde el manuscrito hasta la librería online. Un servicio editorial completo, transparente y adaptado a cada autor.</p>
+      <p class="pd-svc__intro">Desde el manuscrito hasta la librería online. Pasa el ratón sobre cada tarjeta para descubrir el problema que resolvemos.</p>
     </div>
+
     <div class="pd-svc__grid">
+
+      <!-- 1. Publicación en papel -->
       <div class="pd-svc__card">
-        <div class="pd-svc__card-icon">📘</div>
-        <h3 class="pd-svc__card-title">Publicación en papel</h3>
-        <p class="pd-svc__card-desc">Tu libro impreso bajo demanda, disponible en Amazon y en más de 100 librerías online.</p>
-        <ul class="pd-svc__card-list">
-          <li>Maquetación profesional</li>
-          <li>Diseño de portada a medida</li>
-          <li>Impresión bajo demanda (POD)</li>
-          <li>ISBN y registro de autor</li>
-        </ul>
+        <div class="pd-svc__card-inner">
+          <div class="pd-svc__card-front">
+            <div class="pd-svc__card-icon">📘</div>
+            <h3 class="pd-svc__card-title">Publicación en papel</h3>
+            <p class="pd-svc__card-desc">Tu libro impreso bajo demanda, disponible en Amazon y en más de 100 librerías online.</p>
+            <ul class="pd-svc__card-list">
+              <li>Maquetación profesional</li>
+              <li>Diseño de portada a medida</li>
+              <li>Impresión bajo demanda (POD)</li>
+              <li>ISBN y registro de autor</li>
+            </ul>
+            <span class="pd-svc__flip-hint">El problema que resolvemos</span>
+          </div>
+          <div class="pd-svc__card-back">
+            <div>
+              <p class="pd-svc__pain-label">¿Te identificas?</p>
+              <p class="pd-svc__pain-q">"¿Cansado de imprimir 500 copias que nadie compra?"</p>
+              <p class="pd-svc__pain-text">Las editoriales tradicionales te obligan a asumir tiradas mínimas. El resultado: cajas apiladas en el garaje, dinero perdido y frustración.</p>
+            </div>
+            <div class="pd-svc__solution">
+              <p class="pd-svc__solution-label">Nuestra solución</p>
+              <p class="pd-svc__solution-text">Con print on demand, cada ejemplar se imprime solo cuando alguien lo compra. Cero stock, cero riesgo, beneficio desde la primera venta.</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 2. Distribución global (featured) -->
       <div class="pd-svc__card pd-svc__card--featured">
-        <span class="pd-svc__card-badge">Más elegido</span>
-        <div class="pd-svc__card-icon">🌐</div>
-        <h3 class="pd-svc__card-title">Distribución global</h3>
-        <p class="pd-svc__card-desc">Llega a lectores en todo el mundo mediante nuestra red de +35 plataformas de distribución.</p>
-        <ul class="pd-svc__card-list">
-          <li>Amazon, Apple Books, Google Play</li>
-          <li>Kobo, Barnes &amp; Noble, Rakuten</li>
-          <li>Librerías nacionales e internacionales</li>
-          <li>Royalties mensuales transparentes</li>
-        </ul>
+        <div class="pd-svc__card-inner">
+          <div class="pd-svc__card-front">
+            <span class="pd-svc__card-badge">Más elegido</span>
+            <div class="pd-svc__card-icon">🌐</div>
+            <h3 class="pd-svc__card-title">Distribución global</h3>
+            <p class="pd-svc__card-desc">Llega a lectores en todo el mundo mediante nuestra red de +35 plataformas de distribución.</p>
+            <ul class="pd-svc__card-list">
+              <li>Amazon, Apple Books, Google Play</li>
+              <li>Kobo, Barnes &amp; Noble, Rakuten</li>
+              <li>Librerías nacionales e internacionales</li>
+              <li>Royalties mensuales transparentes</li>
+            </ul>
+            <span class="pd-svc__flip-hint">El problema que resolvemos</span>
+          </div>
+          <div class="pd-svc__card-back">
+            <div>
+              <p class="pd-svc__pain-label">¿Te identificas?</p>
+              <p class="pd-svc__pain-q">"¿Tu libro existe, pero nadie lo encuentra?"</p>
+              <p class="pd-svc__pain-text">Publicar solo en Amazon o en 1–2 plataformas significa ser invisible para millones de lectores. Cada tienda que falta son ventas que pierdes.</p>
+            </div>
+            <div class="pd-svc__solution">
+              <p class="pd-svc__solution-label">Nuestra solución</p>
+              <p class="pd-svc__solution-text">Una sola publicación, presencia en +35 plataformas del mundo. Máxima visibilidad sin trabajo extra de tu parte.</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 3. eBook profesional -->
       <div class="pd-svc__card">
-        <div class="pd-svc__card-icon">📱</div>
-        <h3 class="pd-svc__card-title">eBook profesional</h3>
-        <p class="pd-svc__card-desc">Conversión y optimización de tu obra en formato digital para todos los dispositivos.</p>
-        <ul class="pd-svc__card-list">
-          <li>Formato EPUB y MOBI</li>
-          <li>Optimización para Kindle</li>
-          <li>Portada adaptada para digital</li>
-          <li>Metadatos SEO para buscadores</li>
-        </ul>
+        <div class="pd-svc__card-inner">
+          <div class="pd-svc__card-front">
+            <div class="pd-svc__card-icon">📱</div>
+            <h3 class="pd-svc__card-title">eBook profesional</h3>
+            <p class="pd-svc__card-desc">Conversión y optimización de tu obra en formato digital para todos los dispositivos.</p>
+            <ul class="pd-svc__card-list">
+              <li>Formato EPUB y MOBI</li>
+              <li>Optimización para Kindle</li>
+              <li>Portada adaptada para digital</li>
+              <li>Metadatos SEO para buscadores</li>
+            </ul>
+            <span class="pd-svc__flip-hint">El problema que resolvemos</span>
+          </div>
+          <div class="pd-svc__card-back">
+            <div>
+              <p class="pd-svc__pain-label">¿Te identificas?</p>
+              <p class="pd-svc__pain-q">"¿Tu Word convertido en eBook da vergüenza?"</p>
+              <p class="pd-svc__pain-text">Las conversiones automáticas rompen el diseño, mezclan fuentes y generan saltos de página aleatorios en Kindle. Los lectores lo notan y dejan reseñas negativas.</p>
+            </div>
+            <div class="pd-svc__solution">
+              <p class="pd-svc__solution-label">Nuestra solución</p>
+              <p class="pd-svc__solution-text">Maquetamos tu eBook manualmente: se ve perfecto en cualquier dispositivo. EPUB certificado, Kindle validado, lectores satisfechos.</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 4. Corrección editorial -->
       <div class="pd-svc__card">
-        <div class="pd-svc__card-icon">✏️</div>
-        <h3 class="pd-svc__card-title">Corrección editorial</h3>
-        <p class="pd-svc__card-desc">Un equipo de correctores nativos en español revisa tu texto con rigor profesional.</p>
-        <ul class="pd-svc__card-list">
-          <li>Corrección ortotipográfica</li>
-          <li>Revisión de estilo</li>
-          <li>Coherencia narrativa</li>
-          <li>Informe de sugerencias</li>
-        </ul>
+        <div class="pd-svc__card-inner">
+          <div class="pd-svc__card-front">
+            <div class="pd-svc__card-icon">✏️</div>
+            <h3 class="pd-svc__card-title">Corrección editorial</h3>
+            <p class="pd-svc__card-desc">Un equipo de correctores nativos en español revisa tu texto con rigor profesional.</p>
+            <ul class="pd-svc__card-list">
+              <li>Corrección ortotipográfica</li>
+              <li>Revisión de estilo</li>
+              <li>Coherencia narrativa</li>
+              <li>Informe de sugerencias</li>
+            </ul>
+            <span class="pd-svc__flip-hint">El problema que resolvemos</span>
+          </div>
+          <div class="pd-svc__card-back">
+            <div>
+              <p class="pd-svc__pain-label">¿Te identificas?</p>
+              <p class="pd-svc__pain-q">"¿Un error tipográfico arruina años de trabajo?"</p>
+              <p class="pd-svc__pain-text">Publicar con erratas destruye tu credibilidad. Los lectores lo mencionan en cada reseña y los algoritmos de las plataformas penalizan los libros mal valorados.</p>
+            </div>
+            <div class="pd-svc__solution">
+              <p class="pd-svc__solution-label">Nuestra solución</p>
+              <p class="pd-svc__solution-text">Correctores nativos revisan cada línea antes de publicar. Entregamos tu manuscrito impecable con informe detallado de cambios.</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 5. Diseño de portada -->
       <div class="pd-svc__card">
-        <div class="pd-svc__card-icon">🎨</div>
-        <h3 class="pd-svc__card-title">Diseño de portada</h3>
-        <p class="pd-svc__card-desc">La primera impresión cuenta. Diseñamos portadas que capturan la esencia de tu obra.</p>
-        <ul class="pd-svc__card-list">
-          <li>3 propuestas de diseño</li>
-          <li>Revisiones ilimitadas</li>
-          <li>Adaptado a papel y digital</li>
-          <li>Formato vectorial entregado</li>
-        </ul>
+        <div class="pd-svc__card-inner">
+          <div class="pd-svc__card-front">
+            <div class="pd-svc__card-icon">🎨</div>
+            <h3 class="pd-svc__card-title">Diseño de portada</h3>
+            <p class="pd-svc__card-desc">La primera impresión cuenta. Diseñamos portadas que capturan la esencia de tu obra.</p>
+            <ul class="pd-svc__card-list">
+              <li>3 propuestas de diseño</li>
+              <li>Revisiones ilimitadas</li>
+              <li>Adaptado a papel y digital</li>
+              <li>Formato vectorial entregado</li>
+            </ul>
+            <span class="pd-svc__flip-hint">El problema que resolvemos</span>
+          </div>
+          <div class="pd-svc__card-back">
+            <div>
+              <p class="pd-svc__pain-label">¿Te identificas?</p>
+              <p class="pd-svc__pain-q">"¿Una portada genérica mata tu libro antes de abrirse?"</p>
+              <p class="pd-svc__pain-text">El 80% de las decisiones de compra se toman mirando solo la portada. Una imagen de stock mal elegida hace que tu libro parezca amateur, sin importar el contenido.</p>
+            </div>
+            <div class="pd-svc__solution">
+              <p class="pd-svc__solution-label">Nuestra solución</p>
+              <p class="pd-svc__solution-text">Diseñadores especializados por género literario. Tu portada compite al mismo nivel visual que las grandes editoriales.</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 6. Panel del autor -->
       <div class="pd-svc__card">
-        <div class="pd-svc__card-icon">📊</div>
-        <h3 class="pd-svc__card-title">Panel del autor</h3>
-        <p class="pd-svc__card-desc">Accede a estadísticas de ventas, royalties y visibilidad en tiempo real desde tu área privada.</p>
-        <ul class="pd-svc__card-list">
-          <li>Dashboard de ventas en vivo</li>
-          <li>Informe mensual de royalties</li>
-          <li>Historial de distribución</li>
-          <li>Soporte dedicado por email</li>
-        </ul>
+        <div class="pd-svc__card-inner">
+          <div class="pd-svc__card-front">
+            <div class="pd-svc__card-icon">📊</div>
+            <h3 class="pd-svc__card-title">Panel del autor</h3>
+            <p class="pd-svc__card-desc">Accede a estadísticas de ventas, royalties y visibilidad en tiempo real desde tu área privada.</p>
+            <ul class="pd-svc__card-list">
+              <li>Dashboard de ventas en vivo</li>
+              <li>Informe mensual de royalties</li>
+              <li>Historial de distribución</li>
+              <li>Soporte dedicado por email</li>
+            </ul>
+            <span class="pd-svc__flip-hint">El problema que resolvemos</span>
+          </div>
+          <div class="pd-svc__card-back">
+            <div>
+              <p class="pd-svc__pain-label">¿Te identificas?</p>
+              <p class="pd-svc__pain-q">"¿No sabes cuánto ganas ni cuándo te pagan?"</p>
+              <p class="pd-svc__pain-text">Los sistemas opacos de regalías son la norma en el sector. Muchos autores reciben liquidaciones trimestrales con datos incomprensibles — si es que llegan.</p>
+            </div>
+            <div class="pd-svc__solution">
+              <p class="pd-svc__solution-label">Nuestra solución</p>
+              <p class="pd-svc__solution-text">Panel propio con datos en tiempo real: cuántos libros, en qué tienda, cuánto dinero. Pago mensual automático, sin sorpresas ni retrasos.</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+    </div><!-- /.pd-svc__grid -->
+
     <div class="pd-svc__cta">
       <a href="#form1" class="pd-svc__cta-link">
         Solicitar información gratuita
@@ -265,3 +476,20 @@
     </div>
   </div>
 </section>
+
+<script>
+(function(){
+  /* Touch toggle — only activates on touch devices to avoid conflict with CSS :hover */
+  if (!('ontouchstart' in window) && !(navigator.maxTouchPoints > 0)) return;
+  document.querySelectorAll('.pd-svc__card').forEach(function(card){
+    card.addEventListener('touchstart', function(e){
+      e.preventDefault();
+      var isFlipped = this.classList.contains('pd-flipped');
+      document.querySelectorAll('.pd-svc__card.pd-flipped').forEach(function(c){
+        c.classList.remove('pd-flipped');
+      });
+      if (!isFlipped) this.classList.add('pd-flipped');
+    }, { passive: false });
+  });
+})();
+</script>
