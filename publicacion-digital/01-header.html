@@ -49,7 +49,7 @@
 
   /* — Main nav — */
   .pd-header__nav {
-    padding: 14px 40px;
+    padding: 12px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,19 +57,21 @@
     margin: 0 auto;
   }
 
-  /* — Logo — */
+  /* — Logo: sfondo bianco pill, funziona con qualsiasi PNG — */
   .pd-header__logo {
     display: block;
     text-decoration: none;
     line-height: 0;
+    background: #ffffff;
+    padding: 7px 14px;
+    border-radius: 6px;
     transition: opacity 0.2s;
   }
-  .pd-header__logo:hover { opacity: 0.85; }
+  .pd-header__logo:hover { opacity: 0.88; }
   .pd-header__logo img {
-    height: 46px;
+    height: 34px;
     width: auto;
     display: block;
-    filter: brightness(0) invert(1);
   }
 
   /* — Menu links — */
@@ -170,11 +172,12 @@
   /* — Responsive — */
   @media (max-width: 768px) {
     .pd-header__topbar { padding: 7px 20px; }
-    .pd-header__nav { padding: 12px 20px; }
+    .pd-header__nav { padding: 10px 20px; }
     .pd-header__links { display: none; }
     .pd-header__burger { display: flex; }
     .pd-header__divider { margin: 0 20px; }
-    .pd-header__logo img { height: 36px; }
+    .pd-header__logo img { height: 28px; }
+    .pd-header__logo { padding: 5px 10px; }
   }
 </style>
 
