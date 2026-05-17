@@ -1,0 +1,380 @@
+<!-- ============================================================
+     PUBLICACION DIGITAL — BLOCCO 6: COPERTINE
+     Incolla questo codice in un blocco "HTML" di Elementor
+     ————————————————————————————————————————————————————————————
+     ISTRUZIONI IMMAGINI:
+     Carica le 5 copertine nella Media Library di WordPress e
+     sostituisci i placeholder COVER_URL_1 … COVER_URL_5 con
+     gli URL effettivi (es. /wp-content/uploads/2026/05/cover1.jpg)
+     ============================================================ -->
+
+<style>
+  .pd-covers * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pd-covers {
+    --pd-blue:   #041837;
+    --pd-orange: #A00000;
+    --pd-cream:  #F5F0E8;
+    --pd-white:  #FFFFFF;
+    --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
+  }
+
+  /* — Full-bleed — */
+  .pd-covers {
+    width: 100vw;
+    position: relative;
+    left: 50%; right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--pd-blue);
+    font-family: var(--pd-font-b);
+    padding: 96px 40px 80px;
+    overflow: hidden;
+  }
+
+  /* Subtle radial glow top-right */
+  .pd-covers::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(160,0,0,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .pd-covers__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* — Header — */
+  .pd-covers__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .pd-covers__label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 14px;
+  }
+
+  .pd-covers__title {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--pd-white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .pd-covers__subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    max-width: 520px;
+  }
+
+  /* Value callout pill */
+  .pd-covers__value {
+    flex-shrink: 0;
+    background: rgba(160,0,0,0.15);
+    border: 1px solid rgba(160,0,0,0.35);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 200px;
+  }
+  .pd-covers__value-old {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: line-through;
+    margin-bottom: 6px;
+  }
+  .pd-covers__value-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--pd-orange);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pd-covers__value-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .pd-covers__value-included {
+    display: inline-block;
+    margin-top: 10px;
+    background: #A00000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* — Covers grid — */
+  .pd-covers__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .pd-covers__item {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .pd-covers__item-img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 2 / 3;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateY(0) rotate(0deg);
+    transition: transform 0.35s cubic-bezier(.2,0,.2,1), box-shadow 0.35s;
+  }
+
+  /* Alternate slight rotations for visual variety */
+  .pd-covers__item:nth-child(1) .pd-covers__item-img-wrap { transform: rotate(-1.5deg); }
+  .pd-covers__item:nth-child(2) .pd-covers__item-img-wrap { transform: rotate(1deg); }
+  .pd-covers__item:nth-child(3) .pd-covers__item-img-wrap { transform: rotate(-0.5deg); }
+  .pd-covers__item:nth-child(4) .pd-covers__item-img-wrap { transform: rotate(1.5deg); }
+  .pd-covers__item:nth-child(5) .pd-covers__item-img-wrap { transform: rotate(-1deg); }
+
+  .pd-covers__item:hover .pd-covers__item-img-wrap {
+    transform: translateY(-12px) rotate(0deg) scale(1.03) !important;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.7);
+  }
+
+  .pd-covers__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s;
+  }
+
+  /* Overlay on hover */
+  .pd-covers__item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(4,24,55,0.85) 0%, transparent 55%);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+  .pd-covers__item:hover .pd-covers__item-overlay { opacity: 1; }
+
+  .pd-covers__item-genre {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 4px;
+  }
+  .pd-covers__item-booktitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+  .pd-covers__item-author {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* — Bottom banner — */
+  .pd-covers__banner {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .pd-covers__banner-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .pd-covers__banner-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+  .pd-covers__banner-text strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .pd-covers__banner-text p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .pd-covers__banner-text p span {
+    color: var(--pd-orange);
+    font-weight: 700;
+  }
+
+  .pd-covers__banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pd-orange);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(160,0,0,0.4);
+  }
+  .pd-covers__banner-cta:hover {
+    background: #800000;
+    transform: translateY(-2px);
+  }
+
+  /* — Responsive — */
+  @media (max-width: 900px) {
+    .pd-covers__grid { grid-template-columns: repeat(3, 1fr); }
+    .pd-covers__header { grid-template-columns: 1fr; }
+    .pd-covers__value { display: flex; align-items: center; gap: 20px; text-align: left; width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .pd-covers { padding: 64px 20px 56px; }
+    .pd-covers__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pd-covers__banner { flex-direction: column; text-align: center; }
+    .pd-covers__banner-left { flex-direction: column; text-align: center; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<section class="pd-covers" id="copertine">
+  <div class="pd-covers__inner">
+
+    <!-- Header -->
+    <div class="pd-covers__header">
+      <div>
+        <span class="pd-covers__label">Diseño de portada profesional</span>
+        <h2 class="pd-covers__title">Portadas que hacen<br>vender libros</h2>
+        <p class="pd-covers__subtitle">El 80% de los lectores decide comprar un libro por su portada. Las nuestras están diseñadas por profesionales especializados en cada género — y van incluidas en el precio.</p>
+      </div>
+      <div class="pd-covers__value">
+        <div class="pd-covers__value-old">Valor de mercado: 250 €</div>
+        <div class="pd-covers__value-price">0 €</div>
+        <div class="pd-covers__value-label">coste extra</div>
+        <span class="pd-covers__value-included">✓ Incluida en tu paquete</span>
+      </div>
+    </div>
+
+    <!-- Covers grid -->
+    <div class="pd-covers__grid">
+
+      <div class="pd-covers__item">
+        <div class="pd-covers__item-img-wrap">
+          <!-- Sostituisci con l'URL reale da WordPress Media Library -->
+          <img src="COVER_URL_1" alt="Más allá de los límites — Diego Alarcón" loading="lazy">
+          <div class="pd-covers__item-overlay">
+            <span class="pd-covers__item-genre">Autoayuda</span>
+            <span class="pd-covers__item-booktitle">Más allá de los límites</span>
+            <span class="pd-covers__item-author">Diego Alarcón</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-covers__item">
+        <div class="pd-covers__item-img-wrap">
+          <img src="COVER_URL_2" alt="Cartas para mi futuro — Lucía Fernández" loading="lazy">
+          <div class="pd-covers__item-overlay">
+            <span class="pd-covers__item-genre">Desarrollo personal</span>
+            <span class="pd-covers__item-booktitle">Cartas para mi futuro</span>
+            <span class="pd-covers__item-author">Lucía Fernández</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-covers__item">
+        <div class="pd-covers__item-img-wrap">
+          <img src="COVER_URL_3" alt="Sombras del pasado — Marta Salgado" loading="lazy">
+          <div class="pd-covers__item-overlay">
+            <span class="pd-covers__item-genre">Novela de misterio</span>
+            <span class="pd-covers__item-booktitle">Sombras del pasado</span>
+            <span class="pd-covers__item-author">Marta Salgado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-covers__item">
+        <div class="pd-covers__item-img-wrap">
+          <img src="COVER_URL_4" alt="El arte de empezar — Carlos Herrera" loading="lazy">
+          <div class="pd-covers__item-overlay">
+            <span class="pd-covers__item-genre">Motivación</span>
+            <span class="pd-covers__item-booktitle">El arte de empezar</span>
+            <span class="pd-covers__item-author">Carlos Herrera</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-covers__item">
+        <div class="pd-covers__item-img-wrap">
+          <img src="COVER_URL_5" alt="La brújula interior — Isabel Montes" loading="lazy">
+          <div class="pd-covers__item-overlay">
+            <span class="pd-covers__item-genre">Espiritualidad</span>
+            <span class="pd-covers__item-booktitle">La brújula interior</span>
+            <span class="pd-covers__item-author">Isabel Montes</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.pd-covers__grid -->
+
+    <!-- Bottom banner -->
+    <div class="pd-covers__banner">
+      <div class="pd-covers__banner-left">
+        <span class="pd-covers__banner-icon">🎨</span>
+        <div class="pd-covers__banner-text">
+          <strong>Tu portada profesional, sin coste adicional</strong>
+          <p>Otros cobran <span>hasta 250 € solo por el diseño</span>. Nosotros lo incluimos: 3 propuestas, revisiones ilimitadas y formatos para papel y digital.</p>
+        </div>
+      </div>
+      <a href="#form1" class="pd-covers__banner-cta">
+        Quiero mi portada
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
