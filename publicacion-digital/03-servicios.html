@@ -278,7 +278,9 @@
   @media (max-width: 1024px) { .pd-svc__grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) {
     .pd-svc { padding: 64px 20px; }
-    .pd-svc__grid { grid-template-columns: 1fr; }
+    .pd-svc__grid { grid-template-columns: 1fr; gap: 40px; }
+    .pd-svc__card,
+    .pd-svc__card--featured { height: 460px; }
     /* Disable CSS hover on touch — JS handles toggle */
     .pd-svc__card:hover .pd-svc__card-inner { transform: none; }
     .pd-svc__card.pd-flipped .pd-svc__card-inner { transform: rotateY(180deg); }
