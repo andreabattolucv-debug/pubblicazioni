@@ -489,17 +489,24 @@
 
 <script>
 (function(){
-  /* Touch toggle — only activates on touch devices to avoid conflict with CSS :hover */
   if (!('ontouchstart' in window) && !(navigator.maxTouchPoints > 0)) return;
   document.querySelectorAll('.pd-svc__card').forEach(function(card){
+    var startX, startY;
     card.addEventListener('touchstart', function(e){
-      e.preventDefault();
-      var isFlipped = this.classList.contains('pd-flipped');
-      document.querySelectorAll('.pd-svc__card.pd-flipped').forEach(function(c){
-        c.classList.remove('pd-flipped');
-      });
-      if (!isFlipped) this.classList.add('pd-flipped');
-    }, { passive: false });
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+    card.addEventListener('touchend', function(e){
+      var dx = Math.abs(e.changedTouches[0].clientX - startX);
+      var dy = Math.abs(e.changedTouches[0].clientY - startY);
+      if (dx < 10 && dy < 10) {
+        var isFlipped = this.classList.contains('pd-flipped');
+        document.querySelectorAll('.pd-svc__card.pd-flipped').forEach(function(c){
+          c.classList.remove('pd-flipped');
+        });
+        if (!isFlipped) this.classList.add('pd-flipped');
+      }
+    }, { passive: true });
   });
 })();
 </script>
