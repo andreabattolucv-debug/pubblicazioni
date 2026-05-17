@@ -58,6 +58,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
+    align-items: start;
   }
 
   /* ── Flip container ── */
@@ -65,6 +66,7 @@
     perspective: 1000px;
     height: 380px;
     cursor: pointer;
+    overflow: hidden;
   }
 
   /* ── Inner — rotates on hover / touch ── */
@@ -165,6 +167,10 @@
   .pd-svc__flip-hint::after { content: '↻'; font-size: 13px; }
 
   /* Featured front */
+  .pd-svc__card--featured {
+    height: 380px;
+    overflow: hidden;
+  }
   .pd-svc__card--featured .pd-svc__card-front {
     background: var(--pd-blue);
     border-color: transparent;
