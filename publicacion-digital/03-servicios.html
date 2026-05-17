@@ -66,7 +66,6 @@
     perspective: 1000px;
     height: 380px;
     cursor: pointer;
-    overflow: hidden;
   }
 
   /* ── Inner — rotates on hover / touch ── */
@@ -91,6 +90,10 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     overflow: hidden;
+    /* forza il rispetto del border-radius con GPU compositing */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    will-change: transform;
   }
 
   /* ── FRONT ── */
@@ -169,7 +172,6 @@
   /* Featured front */
   .pd-svc__card--featured {
     height: 380px;
-    overflow: hidden;
   }
   .pd-svc__card--featured .pd-svc__card-front {
     background: var(--pd-blue);
@@ -179,7 +181,7 @@
   .pd-svc__card--featured .pd-svc__card-title  { color: #FFFFFF; }
   .pd-svc__card--featured .pd-svc__card-desc   { color: rgba(245,240,232,0.7); }
   .pd-svc__card--featured .pd-svc__card-list li { color: rgba(245,240,232,0.85); }
-  .pd-svc__card--featured .pd-svc__card-icon   { background: rgba(160,0,0,0.25); }
+  .pd-svc__card--featured .pd-svc__card-icon   { background: rgba(255,255,255,0.15); }
   .pd-svc__card--featured .pd-svc__flip-hint   { color: rgba(255,255,255,0.35); }
 
   .pd-svc__card-badge {
