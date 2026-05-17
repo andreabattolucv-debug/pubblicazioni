@@ -7,8 +7,8 @@
   .pd-hero * { box-sizing: border-box; margin: 0; padding: 0; }
 
   .pd-hero {
-    --pd-blue:   #1A3C6E;
-    --pd-orange: #E8601C;
+    --pd-blue:   #041837;
+    --pd-orange: #A00000;
     --pd-cream:  #F5F0E8;
     --pd-white:  #FFFFFF;
     --pd-font-h: 'Montserrat', 'Helvetica Neue', sans-serif;
@@ -23,7 +23,7 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    background: linear-gradient(135deg, #0e2647 0%, #1A3C6E 60%, #1d4a85 100%);
+    background: linear-gradient(135deg, #020c1b 0%, #041837 60%, #041837 100%);
     font-family: var(--pd-font-b);
     overflow: hidden;
     padding: 80px 40px 70px;
@@ -34,7 +34,7 @@
     position: absolute;
     top: -80px; right: -80px;
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(232,96,28,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(160,0,0,0.15) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -51,9 +51,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(232,96,28,0.18);
-    border: 1px solid rgba(232,96,28,0.4);
-    color: #ffb38a;
+    background: rgba(160,0,0,0.18);
+    border: 1px solid rgba(160,0,0,0.4);
+    color: #ff9999;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -113,12 +113,12 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(232,96,28,0.35);
+    box-shadow: 0 4px 20px rgba(160,0,0,0.35);
   }
   .pd-hero__btn-primary:hover {
-    background: #cf541a;
+    background: #800000;
     transform: translateY(-2px);
-    box-shadow: 0 6px 28px rgba(232,96,28,0.45);
+    box-shadow: 0 6px 28px rgba(160,0,0,0.45);
   }
 
   .pd-hero__btn-secondary {
@@ -224,8 +224,8 @@
   }
   .pd-hero__step-num {
     width: 26px; height: 26px;
-    background: rgba(232,96,28,0.2);
-    border: 1px solid rgba(232,96,28,0.4);
+    background: rgba(160,0,0,0.2);
+    border: 1px solid rgba(160,0,0,0.4);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -251,7 +251,7 @@
     text-transform: uppercase;
     transition: background 0.2s;
   }
-  .pd-hero__cta-inside:hover { background: #cf541a; }
+  .pd-hero__cta-inside:hover { background: #800000; }
 
   @media (max-width: 900px) {
     .pd-hero__inner { grid-template-columns: 1fr; gap: 48px; }

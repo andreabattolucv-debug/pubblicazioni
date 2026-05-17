@@ -7,8 +7,8 @@
   .pd-svc * { box-sizing: border-box; margin: 0; padding: 0; }
 
   .pd-svc {
-    --pd-blue:   #1A3C6E;
-    --pd-orange: #E8601C;
+    --pd-blue:   #041837;
+    --pd-orange: #A00000;
     --pd-cream:  #F5F0E8;
     --pd-white:  #FFFFFF;
     --pd-font-h: 'Montserrat', 'Helvetica Neue', sans-serif;
@@ -94,7 +94,7 @@
   /* ── FRONT ── */
   .pd-svc__card-front {
     background: var(--pd-white);
-    border: 1px solid rgba(26,60,110,0.08);
+    border: 1px solid rgba(4,24,55,0.08);
     padding: 36px 32px 28px;
     display: flex;
     flex-direction: column;
@@ -105,7 +105,7 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--pd-orange), #f4874a);
+    background: linear-gradient(90deg, var(--pd-orange), #c00000);
     opacity: 0;
     transition: opacity 0.25s;
   }
@@ -113,7 +113,7 @@
 
   .pd-svc__card-icon {
     width: 52px; height: 52px;
-    background: rgba(232,96,28,0.1);
+    background: rgba(160,0,0,0.1);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -157,7 +157,7 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(26,60,110,0.35);
+    color: rgba(4,24,55,0.35);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -173,7 +173,7 @@
   .pd-svc__card--featured .pd-svc__card-title  { color: #FFFFFF; }
   .pd-svc__card--featured .pd-svc__card-desc   { color: rgba(245,240,232,0.7); }
   .pd-svc__card--featured .pd-svc__card-list li { color: rgba(245,240,232,0.85); }
-  .pd-svc__card--featured .pd-svc__card-icon   { background: rgba(232,96,28,0.25); }
+  .pd-svc__card--featured .pd-svc__card-icon   { background: rgba(160,0,0,0.25); }
   .pd-svc__card--featured .pd-svc__flip-hint   { color: rgba(255,255,255,0.35); }
 
   .pd-svc__card-badge {
@@ -198,7 +198,7 @@
     flex-direction: column;
     justify-content: space-between;
   }
-  .pd-svc__card--featured .pd-svc__card-back { background: #0d1f3c; }
+  .pd-svc__card--featured .pd-svc__card-back { background: #020c1b; }
 
   .pd-svc__pain-label {
     font-size: 10px;
@@ -222,7 +222,7 @@
     line-height: 1.65;
   }
   .pd-svc__solution {
-    background: rgba(232,96,28,0.12);
+    background: rgba(160,0,0,0.12);
     border-left: 3px solid var(--pd-orange);
     border-radius: 0 6px 6px 0;
     padding: 12px 14px;
@@ -258,12 +258,12 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 18px rgba(232,96,28,0.3);
+    box-shadow: 0 4px 18px rgba(160,0,0,0.3);
   }
   .pd-svc__cta-link:hover {
-    background: #cf541a;
+    background: #800000;
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(232,96,28,0.4);
+    box-shadow: 0 6px 24px rgba(160,0,0,0.4);
   }
   .pd-svc__cta-note { margin-top: 14px; font-size: 13px; color: #9ca3af; }
 
