@@ -1,0 +1,441 @@
+<!-- ============================================================
+     PUBLICACION DIGITAL — BLOCCO 8: IMPAGINAZIONE PROFESSIONALE
+     Incolla questo codice in un blocco "HTML" di Elementor
+     ————————————————————————————————————————————————————————————
+     ISTRUZIONI IMMAGINI:
+     Carica lo screenshot dell'impaginazione nella Media Library di WordPress e
+     sostituisci il placeholder con l'URL effettivo.
+     ============================================================ -->
+
+<style>
+  .pd-layout * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .pd-layout {
+    --pd-blue:   #041837;
+    --pd-orange: #A00000;
+    --pd-cream:  #F5F0E8;
+    --pd-white:  #FFFFFF;
+    --pd-font-b: 'Montserrat', 'Helvetica Neue', sans-serif;
+  }
+
+  /* — Full-bleed — */
+  .pd-layout {
+    width: 100vw;
+    position: relative;
+    left: 50%; right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--pd-cream);
+    font-family: var(--pd-font-b);
+    padding: 96px 40px 80px;
+    overflow: hidden;
+  }
+
+  /* Subtle radial glow top-left */
+  .pd-layout::before {
+    content: '';
+    position: absolute;
+    top: -120px; left: -120px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(4,24,55,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .pd-layout__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* — Header — */
+  .pd-layout__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .pd-layout__label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 14px;
+  }
+
+  .pd-layout__title {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--pd-blue);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .pd-layout__subtitle {
+    font-size: 16px;
+    color: rgba(4,24,55,0.65);
+    line-height: 1.65;
+    max-width: 520px;
+  }
+
+  /* Value callout pill */
+  .pd-layout__value {
+    flex-shrink: 0;
+    background: rgba(160,0,0,0.08);
+    border: 1px solid rgba(160,0,0,0.3);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 200px;
+  }
+  .pd-layout__value-old {
+    font-size: 13px;
+    color: rgba(4,24,55,0.45);
+    text-decoration: line-through;
+    margin-bottom: 6px;
+  }
+  .pd-layout__value-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--pd-orange);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pd-layout__value-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(4,24,55,0.45);
+  }
+  .pd-layout__value-included {
+    display: inline-block;
+    margin-top: 10px;
+    background: #A00000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* — Two-column layout: preview + features — */
+  .pd-layout__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  /* — InDesign preview mockup — */
+  .pd-layout__preview {
+    position: relative;
+  }
+
+  .pd-layout__preview-frame {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(4,24,55,0.18);
+    background: #fff;
+    border: 1px solid rgba(4,24,55,0.08);
+  }
+
+  .pd-layout__preview-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Software badge */
+  .pd-layout__preview-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--pd-blue);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pd-layout__preview-badge::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pd-orange);
+  }
+
+  /* — Feature list — */
+  .pd-layout__features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pd-layout__feature {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .pd-layout__feature-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--pd-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .pd-layout__feature-text strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pd-blue);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .pd-layout__feature-text p {
+    font-size: 14px;
+    color: rgba(4,24,55,0.6);
+    line-height: 1.55;
+  }
+
+  /* — Specs row — */
+  .pd-layout__specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .pd-layout__spec {
+    background: var(--pd-blue);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .pd-layout__spec-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--pd-white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .pd-layout__spec-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* — Bottom banner — */
+  .pd-layout__banner {
+    background: var(--pd-blue);
+    border-radius: 14px;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .pd-layout__banner-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .pd-layout__banner-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+  .pd-layout__banner-text strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .pd-layout__banner-text p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .pd-layout__banner-text p span {
+    color: var(--pd-orange);
+    font-weight: 700;
+  }
+
+  .pd-layout__banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pd-orange);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(160,0,0,0.4);
+  }
+  .pd-layout__banner-cta:hover {
+    background: #800000;
+    transform: translateY(-2px);
+  }
+
+  /* — Responsive — */
+  @media (max-width: 900px) {
+    .pd-layout__body { grid-template-columns: 1fr; gap: 40px; }
+    .pd-layout__header { grid-template-columns: 1fr; }
+    .pd-layout__value { display: flex; align-items: center; gap: 20px; text-align: left; width: 100%; }
+    .pd-layout__specs { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .pd-layout { padding: 64px 20px 56px; }
+    .pd-layout__specs { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .pd-layout__banner { flex-direction: column; text-align: center; }
+    .pd-layout__banner-left { flex-direction: column; text-align: center; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<section class="pd-layout" id="impaginazione">
+  <div class="pd-layout__inner">
+
+    <!-- Header -->
+    <div class="pd-layout__header">
+      <div>
+        <span class="pd-layout__label">Maquetación profesional con Adobe InDesign</span>
+        <h2 class="pd-layout__title">El interior de tu libro,<br>diseñado para ser leído</h2>
+        <p class="pd-layout__subtitle">Una buena maquetación no se nota — simplemente hace que leer sea cómodo y fluido. Trabajamos con Adobe InDesign, el estándar de la industria editorial, para que tu libro luzca profesional por dentro.</p>
+      </div>
+      <div class="pd-layout__value">
+        <div class="pd-layout__value-old">Valor de mercado: 300 €</div>
+        <div class="pd-layout__value-price">0 €</div>
+        <div class="pd-layout__value-label">coste extra</div>
+        <span class="pd-layout__value-included">✓ Incluida en tu paquete</span>
+      </div>
+    </div>
+
+    <!-- Body: preview + features -->
+    <div class="pd-layout__body">
+
+      <!-- InDesign preview -->
+      <div class="pd-layout__preview">
+        <div class="pd-layout__preview-frame">
+          <!-- Sostituisci con l'URL reale da WordPress Media Library -->
+          <img
+            src="https://publicaciondigital.es/wp-content/uploads/2026/05/indesign-impaginazione-preview.png"
+            alt="Ejemplo de maquetación profesional en Adobe InDesign — doble página"
+            loading="lazy"
+          >
+          <div class="pd-layout__preview-badge">Adobe InDesign</div>
+        </div>
+      </div>
+
+      <!-- Feature list -->
+      <div class="pd-layout__features">
+
+        <div class="pd-layout__feature">
+          <div class="pd-layout__feature-icon">📐</div>
+          <div class="pd-layout__feature-text">
+            <strong>Márgenes y tipografía calibrados</strong>
+            <p>Definimos márgenes, interlineado y cuerpo de texto según las normas editoriales para máxima legibilidad en papel y digital.</p>
+          </div>
+        </div>
+
+        <div class="pd-layout__feature">
+          <div class="pd-layout__feature-icon">📖</div>
+          <div class="pd-layout__feature-text">
+            <strong>Capítulos, títulos y jerarquía visual</strong>
+            <p>Cada inicio de capítulo, subtítulo y elemento de página está diseñado con coherencia tipográfica de principio a fin.</p>
+          </div>
+        </div>
+
+        <div class="pd-layout__feature">
+          <div class="pd-layout__feature-icon">🗂️</div>
+          <div class="pd-layout__feature-text">
+            <strong>Numeración, encabezados y pies de página</strong>
+            <p>Foliado automático, encabezados con título de obra y autor, conforme a los estándares de impresión bajo demanda (KDP, IngramSpark).</p>
+          </div>
+        </div>
+
+        <div class="pd-layout__feature">
+          <div class="pd-layout__feature-icon">📄</div>
+          <div class="pd-layout__feature-text">
+            <strong>Exportación en PDF de imprenta y ePub</strong>
+            <p>Entregamos archivos listos para subir a Amazon KDP, IngramSpark o cualquier plataforma de distribución en papel y eBook.</p>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /.pd-layout__body -->
+
+    <!-- Specs row -->
+    <div class="pd-layout__specs">
+      <div class="pd-layout__spec">
+        <div class="pd-layout__spec-value">100%</div>
+        <div class="pd-layout__spec-label">Adobe InDesign nativo</div>
+      </div>
+      <div class="pd-layout__spec">
+        <div class="pd-layout__spec-value">3+</div>
+        <div class="pd-layout__spec-label">Revisiones incluyidas</div>
+      </div>
+      <div class="pd-layout__spec">
+        <div class="pd-layout__spec-value">PDF</div>
+        <div class="pd-layout__spec-label">+ ePub entregados</div>
+      </div>
+      <div class="pd-layout__spec">
+        <div class="pd-layout__spec-value">KDP</div>
+        <div class="pd-layout__spec-label">IngramSpark compatible</div>
+      </div>
+    </div>
+
+    <!-- Bottom banner -->
+    <div class="pd-layout__banner">
+      <div class="pd-layout__banner-left">
+        <span class="pd-layout__banner-icon">📚</span>
+        <div class="pd-layout__banner-text">
+          <strong>Maquetación profesional, sin coste adicional</strong>
+          <p>Un maquetador freelance cobra <span>entre 200 € y 400 € por libro</span>. Lo incluimos en tu paquete: interior perfecto, archivos listos para imprenta.</p>
+        </div>
+      </div>
+      <a href="#form" class="pd-layout__banner-cta">
+        Quiero mi libro maquetado
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
