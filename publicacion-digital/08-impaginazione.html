@@ -284,6 +284,8 @@
     font-size: 14px;
     color: rgba(255,255,255,0.6);
     line-height: 1.5;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .pd-layout__banner-text p span {
     color: var(--pd-orange);
@@ -303,7 +305,8 @@
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
     transition: background 0.2s, transform 0.15s;
     box-shadow: 0 4px 20px rgba(160,0,0,0.4);
   }
