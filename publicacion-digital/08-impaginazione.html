@@ -144,14 +144,101 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 24px 64px rgba(4,24,55,0.18);
-    background: #fff;
+    background: #f0ece4;
     border: 1px solid rgba(4,24,55,0.08);
+    padding: 10px;
   }
 
-  .pd-layout__preview-frame img {
-    width: 100%;
-    height: auto;
-    display: block;
+  /* CSS double-page spread mockup */
+  .pd-layout__spread {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    background: #c8c0b0;
+    border-radius: 4px;
+    padding: 6px;
+  }
+
+  .pd-layout__page {
+    background: #fff;
+    border-radius: 3px;
+    padding: 28px 22px 22px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: inset 0 0 0 1px rgba(160,0,0,0.15);
+  }
+
+  /* Left page — chapter opening */
+  .pd-layout__page--left .pd-mock-chapter-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pd-orange);
+    margin-bottom: 4px;
+  }
+  .pd-layout__page--left .pd-mock-chapter-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pd-blue);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--pd-orange);
+  }
+
+  /* Text lines mockup */
+  .pd-mock-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  .pd-mock-line {
+    height: 7px;
+    border-radius: 2px;
+    background: #d0cbc2;
+  }
+  .pd-mock-line--short  { width: 72%; }
+  .pd-mock-line--medium { width: 88%; }
+  .pd-mock-line--full   { width: 100%; }
+  .pd-mock-line--xshort { width: 45%; }
+
+  /* Right page — two-column text */
+  .pd-layout__page--right {
+    flex-direction: column;
+  }
+  .pd-mock-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    flex: 1;
+  }
+  .pd-mock-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* Header/footer lines on each page */
+  .pd-mock-header {
+    height: 5px;
+    background: #e0dbd2;
+    border-radius: 2px;
+    width: 60%;
+    margin-bottom: 6px;
+  }
+  .pd-mock-footer {
+    height: 5px;
+    background: #e0dbd2;
+    border-radius: 2px;
+    width: 30%;
+    align-self: center;
+    margin-top: 8px;
   }
 
   /* Software badge */
@@ -354,12 +441,70 @@
       <!-- InDesign preview -->
       <div class="pd-layout__preview">
         <div class="pd-layout__preview-frame">
-          <!-- Sostituisci con l'URL reale da WordPress Media Library -->
-          <img
-            src="https://publicaciondigital.es/wp-content/uploads/2026/05/indesign-impaginazione-preview.png"
-            alt="Ejemplo de maquetación profesional en Adobe InDesign — doble página"
-            loading="lazy"
-          >
+
+          <!-- Mockup CSS doppia pagina InDesign -->
+          <div class="pd-layout__spread">
+
+            <!-- Pagina sinistra: apertura capitolo -->
+            <div class="pd-layout__page pd-layout__page--left">
+              <div class="pd-mock-header"></div>
+              <div class="pd-mock-chapter-label">Capítulo 14</div>
+              <div class="pd-mock-chapter-title">Refugio de<br>Esperanza</div>
+              <div class="pd-mock-lines">
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--medium"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--short"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--medium"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--full"></div>
+                <div class="pd-mock-line pd-mock-line--xshort"></div>
+              </div>
+              <div class="pd-mock-footer"></div>
+            </div>
+
+            <!-- Pagina destra: testo a due colonne -->
+            <div class="pd-layout__page pd-layout__page--right">
+              <div class="pd-mock-header"></div>
+              <div class="pd-mock-cols">
+                <div class="pd-mock-col">
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--medium"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--short"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--medium"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--xshort"></div>
+                </div>
+                <div class="pd-mock-col">
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--medium"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--short"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--medium"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--full"></div>
+                  <div class="pd-mock-line pd-mock-line--xshort"></div>
+                </div>
+              </div>
+              <div class="pd-mock-footer"></div>
+            </div>
+
+          </div><!-- /.pd-layout__spread -->
+
           <div class="pd-layout__preview-badge">Adobe InDesign</div>
         </div>
       </div>
