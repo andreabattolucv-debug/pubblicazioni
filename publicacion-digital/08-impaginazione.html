@@ -28,7 +28,18 @@
     background: var(--pd-cream);
     font-family: var(--pd-font-b);
     padding: 96px 40px 80px;
-    overflow: hidden;
+    overflow-x: clip;
+    box-sizing: border-box;
+  }
+
+  /* Garantisce che nessun figlio sfori su mobile */
+  .pd-layout__inner,
+  .pd-layout__banner,
+  .pd-layout__banner-left,
+  .pd-layout__banner-text {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   /* Subtle radial glow top-left */
@@ -321,23 +332,31 @@
     .pd-layout__header { grid-template-columns: 1fr; }
     .pd-layout__value { display: flex; align-items: center; gap: 20px; text-align: left; width: 100%; }
     .pd-layout__specs { grid-template-columns: repeat(2, 1fr); }
-    .pd-layout__banner { flex-direction: column; align-items: center; text-align: center; }
-    .pd-layout__banner-left { flex-direction: column; align-items: center; text-align: center; }
-    .pd-layout__banner-cta { width: 100%; justify-content: center; }
+    .pd-layout__banner {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+      padding: 28px 24px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .pd-layout__banner-left { flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+    .pd-layout__banner-text { min-width: 0; }
+    .pd-layout__banner-cta { width: 100%; justify-content: center; box-sizing: border-box; }
   }
   @media (max-width: 600px) {
-    .pd-layout { padding: 64px 20px 56px; }
+    .pd-layout { padding: 64px 16px 56px; }
     .pd-layout__header { margin-bottom: 40px; }
     .pd-layout__value { flex-direction: column; align-items: flex-start; gap: 8px; }
     .pd-layout__specs { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .pd-layout__spec { padding: 18px 14px; }
+    .pd-layout__spec { padding: 18px 12px; }
     .pd-layout__spec-value { font-size: 22px; }
     .pd-layout__feature { gap: 12px; }
-    .pd-layout__feature-icon { width: 38px; height: 38px; font-size: 17px; }
-    .pd-layout__banner { padding: 24px 20px; gap: 20px; }
-    .pd-layout__banner-text strong { font-size: 16px; }
+    .pd-layout__feature-icon { width: 38px; height: 38px; font-size: 17px; flex-shrink: 0; }
+    .pd-layout__banner { padding: 24px 16px; gap: 20px; }
+    .pd-layout__banner-text strong { font-size: 15px; }
     .pd-layout__banner-text p { font-size: 13px; }
-    .pd-layout__banner-cta { padding: 14px 24px; font-size: 13px; width: 100%; justify-content: center; box-sizing: border-box; }
+    .pd-layout__banner-cta { padding: 14px 20px; font-size: 13px; }
   }
 </style>
 
